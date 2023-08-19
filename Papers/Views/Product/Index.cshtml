@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Papers.Models.Product>
+@* model directive allows to access products passed by the controller to the view *@
+
+
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form method="get" asp-controller="Product" asp-action="Index">
+    <p>
+        Product Name: <input type="text" name="SearchProduct" />
+        <button class="btn btn-primary" asp-action="Index"><span> <i class="fas fa-search"></i></i></span></button>
+        @*<input type="submit" value="Search" class="btn btn-primary"  />*@
+        <a asp-action="Index" class="btn btn-primary">Clear</a>
+
+    </p>
+</form>
+
+<h1>List of Products </h1>
+
+<table class="table">
+    <thead class="thead-light">
+        @* Property names for the products are displayed using html helper *@
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="table-striped">
+        @* model objects are iterated over and displayed using  Html Helper  *@
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => product.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => product.Price)
+                </td>
+
+                <td>
+                    @* When the Buy button next the Product, is clicked, that Id is passed to Buy method in
+                        the cart controller and the user is directed to the Cart page*@
+                    @Html.ActionLink("Buy", "Buy", "Cart", new { id = product.Id }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

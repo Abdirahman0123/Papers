@@ -1,0 +1,75 @@
+﻿@model Papers.Models.Order
+<h1>Invoice</h1>
+<div class="row">
+    <div class="col-md-9">
+        <form asp-controller="Checkout" asp-action="Index" method="post" onclick="display(e)">
+
+
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" style="width:auto" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" style="width:auto" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" style="width:auto" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" style="width:auto" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" style="width:auto" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" style="width:auto" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PostCode" class="control-label"></label>
+                <input asp-for="PostCode" class="form-control" style="width:auto" />
+                <span asp-validation-for="PostCode" class="text-danger"></span>
+            </div>
+            <input class="btn btn-success" type="submit" value="Submit" />
+            @*<button type="submit" class="btn btn-success" onclick="display()"> Complete</button>*@
+            <div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @*
+    <script type="text/javascript">
+        window.onload = function () {
+            swal("Good job!", "Order Sent", "success");
+        };
+    </script>*@
+    <script>
+        function display(e) {
+             e.preventDefault();
+            Swal.fire("Good job!", "Order Sent", "success");
+        }
+
+    </script>
+
+}
+
